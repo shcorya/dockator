@@ -5,11 +5,8 @@ Based on https://github.com/Ilshidur/tor-relay-docker but configured for ATOR
 
 Variables which should be set:
 - `TOR_Nickname`="MY_NICKNAME"
-- `TOR_ContactInfo`="name <name@email.com>"
+- `TOR_ContactInfo`="name <name@email.com> @ator: 0xF5FF4853Ea36e2803E6e408D483a3F93042F86ba"
 - `TOR_Address`="my.domain.invalid"
-
-You can optionally set:
-- `TOR_ControlPort`="9051" - this is useful if you want to run something like [The Onion Box](https://github.com/ralphwetzel/theonionbox)
 
 The changes from the default torrc to this images are:
 - `DataDirectory` is set to `/var/lib/tor` (mount a docker volume at this location)
