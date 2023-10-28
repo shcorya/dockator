@@ -9,8 +9,7 @@ COPY Tor.repo /etc/yum.repos.d/Tor.repo
 COPY torrc /etc/tor/torrc
 
 RUN dnf update -y && dnf install -y tor nyx && \
-    dnf install https://rpm.nodesource.com/pub_20.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y && \
-    dnf install nsolid -y
+    dnf install https://rpm.nodesource.com/pub_20.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
 
 COPY package*.json ./
 
