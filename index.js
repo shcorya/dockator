@@ -95,5 +95,5 @@ function generateConfig (familyMembers) {
 }
 
 function startTor () { // call tor = startTor ()
-    return spawn ('tor', [], { stdio: ['ignore', 'inherit', 'inherit'] , uid: 999 });
+    return spawn ('sudo', ['-u', 'toranon', 'tor'], { stdio: ['ignore', 'inherit', 'inherit']});
 }
