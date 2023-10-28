@@ -27,7 +27,7 @@ let tor = null; // will be set as a subprocces when prudent
     let revision = etcdResponse.header.revision; // where we need to start watching
     let familyMembers = []; // handle the cases where no family members are found
     if (etcdResponse.kvs > 0) {
-        familyMembers = etcdResponse.kvs[0].value.toString ().split (','); // parse array from raw response
+        familyMembers = JSON.parse (etcdResponse.kvs[0].value); // parse array object from raw response
     }
     console.log (dateFormat.format (new Date ()), '[node]', 'Found', familyMembers.length, 'fingerprints in etcd.');
 
@@ -49,7 +49,8 @@ let tor = null; // will be set as a subprocces when prudent
     // watch etcd for further changes
     etcd.watch ().key('/ator/fingerprints').startRevision (revision).create().then (watcher => {
         watcher.on('put', res => {
-            let newFamily = res.value.toString ().split (',');
+            console.log (dateFormat.format (new Date ()), '[node]', 'Got new fingerprint(s) from etcd.');
+            let newFamily = JSON.parse (res.value);
             let oldFamily = getFamilyFromConfig ();
             // if new family is not equal to family read from torrc
             if (newFamily.toString () != oldFamily.toString ()) {
