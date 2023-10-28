@@ -1,0 +1,29 @@
+{
+  "name": "dockator",
+  "version": "0.1.0",
+  "description": "Wrapper for Ator that registers MyFamily nodes in etcd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shcorya/dockator.git"
+  },
+  "keywords": [
+    "tor",
+    "onion",
+    "ator"
+  ],
+  "author": "Stephen Corya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shcorya/dockator/issues"
+  },
+  "homepage": "https://github.com/shcorya/dockator#readme",
+  "dependencies": {
+    "console-log-level": "^1.4.1",
+    "etcd3": "^1.1.2",
+    "fast-date-format": "^2.2.4"
+  }
+}

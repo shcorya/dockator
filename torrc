@@ -179,7 +179,7 @@ ORPort 9001
 ## If you are running multiple relays, you MUST set this option.
 ##
 ## Note: do not use MyFamily on bridge relays.
-#MyFamily $keyid,$keyid,...
+MyFamily
 
 ## Uncomment this if you want your relay to be an exit, with the default
 ## exit policy (or whatever exit policy you set below).

@@ -1,12 +1,20 @@
-FROM fedora
+FROM fedora:38
+
+WORKDIR /usr/src/dockator
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY index.js .
 
 EXPOSE 9001
 
 COPY Tor.repo /etc/yum.repos.d/Tor.repo
-COPY torrc-defaults /etc/tor/torrc-defaults
-COPY entrypoint.sh /entrypoint.sh
+COPY torrc /etc/tor/torrc
 
 RUN dnf update -y && dnf install -y tor nyx && \
-    chmod ugo+rx /entrypoint.sh
+    dnf install https://rpm.nodesource.com/pub_20.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y && \
+    dnf install nsolid -y
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["node", "index.js"]
