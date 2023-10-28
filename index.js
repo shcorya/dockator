@@ -34,9 +34,9 @@ let tor = null; // will be set as a subprocces when prudent
     // put this node in the family if not already
     if (!familyMembers.includes (myFingerprint)) { // prevent duplicate array entries
         familyMembers.push (myFingerprint); // include ourselves in the family
+        familyMembers = familyMembers.sort (); // standardize
+        etcd.put('/ator/fingerprints').value (familyMembers.toString());
     }
-    familyMembers = familyMembers.sort (); // standardize
-    etcd.put('/ator/fingerprints').value (familyMembers.toString());
     // this will trigger a restart of other nodes
 
     // generate a config based on the members read from etcd and write to disk
