@@ -30,3 +30,6 @@ Additionally, the `MyFamily ` line is initially set without a value. Note the si
 5. Start polling, comparing polled fingerprints to /etc/tor/torrc
 - What if another process adds itself to etcd between this node adding it's own fingerprint and starting its watcher?
     - Compare MyFamily in torrc to nodes in etcd at polling interval and
+
+## Todo
+[ ] handle non-graceful exits of tor process by restarting the process
